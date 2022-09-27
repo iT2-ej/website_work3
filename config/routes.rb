@@ -3,5 +3,7 @@ Rails.application.routes.draw do
   resources :books
   resources :users
 
+  get 'home/about' => 'homes#about', as:'about'
+
 root to: "homes#top"
 end
