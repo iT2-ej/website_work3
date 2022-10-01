@@ -1,7 +1,20 @@
-<h2>タイトル</h2>
-
-<p><%= @book.title %></p>
-
-<h2>本文</h2>
-
-<p><%= @book.body %></p>
+<%= render 'info', user: @user%>
+<table>
+   <thead>
+     <tr>
+       <th>Image</th>
+       <th>Name</th>
+       <th></th>
+     </tr>
+   </thead>
+    <tbody>
+      <% @books.each do |book| %>
+      <h2>Book detail</h2>
+       <tr>
+         <td><%= image_tag user.get_profile_image(50,50) %></td>
+         <td><%= user.name %></td>
+         <td><%= link_to title.book, user_path(user.id) %></td>
+       </tr>
+      <% end %>
+    </tbody>
+ </table>
