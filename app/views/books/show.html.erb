@@ -1,20 +1,32 @@
-<%= render 'info', user: @user%>
-<table>
-   <thead>
-     <tr>
-       <th>Image</th>
-       <th>Name</th>
-       <th></th>
-     </tr>
-   </thead>
-    <tbody>
-      <% @books.each do |book| %>
-      <h2>Book detail</h2>
-       <tr>
-         <td><%= image_tag user.get_profile_image(50,50) %></td>
-         <td><%= user.name %></td>
-         <td><%= link_to title.book, user_path(user.id) %></td>
-       </tr>
-      <% end %>
-    </tbody>
- </table>
+<div class= "container px-5 px-sm-0">
+   <div class= "row">
+     <div class="col-md-3">
+      <%= render 'users/info', user: @user%>
+      </div>
+      <div class="col-md-8 offset-md-1">
+      <table class="table">
+          <thead>
+         <tr>
+           <th>Image</th>
+           <th>Name</th>
+           <th></th>
+         </tr>
+       </thead>
+        <tbody>
+          <h2>Book detail</h2>
+           <tr>
+             <td><%= image_tag @user.get_profile_image(300,300) %><br>
+                <%= @user.name %>
+             </td>
+             <td><%= link_to @book.title, user_path(@user.id) %></td>
+             <td><%= @user.name %></td>
+             <td><%= @book.body %></td>
+             </td>
+             <td><%= link_to "Edit", edit_book_path(@book.id), class: "btn btn-sm btn-success" %></td>
+             <td><%= link_to "Destroy", book_path(@book.id), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-sm btn-danger" %></td>
+           </tr>
+        </tbody>
+     </table>
+     </div>
+   </div>
+</div>
