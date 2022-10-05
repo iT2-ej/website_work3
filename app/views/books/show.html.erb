@@ -24,6 +24,10 @@
              </td>
              <td><%= link_to "Edit", edit_book_path(@book.id), class: "btn btn-sm btn-success" %></td>
              <td><%= link_to "Destroy", book_path(@book.id), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-sm btn-danger" %></td>
+             <td><% if @post_image.user == current_user %>
+                  <%= link_to "削除", post_image_path(@post_image), method: :delete %>
+                 <% end %>
+             </td>
            </tr>
         </tbody>
      </table>
