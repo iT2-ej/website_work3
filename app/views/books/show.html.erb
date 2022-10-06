@@ -7,27 +7,21 @@
       <table class="table">
           <thead>
          <tr>
-           <th>Image</th>
-           <th>Name</th>
-           <th></th>
+
          </tr>
        </thead>
         <tbody>
           <h2>Book detail</h2>
            <tr>
              <td><%= image_tag @user.get_profile_image(300,300) %><br>
-                <%= @user.name %>
+                <%= link_to @user.name, user_path(@user.id) %>
              </td>
-             <td><%= link_to @book.title, user_path(@user.id) %></td>
-             <td><%= @user.name %></td>
+             <td><%= link_to @book.title, book_path(@book.id) %></td>
              <td><%= @book.body %></td>
-             </td>
+                 <% if @user.id == current_user.id %>
              <td><%= link_to "Edit", edit_book_path(@book.id), class: "btn btn-sm btn-success" %></td>
              <td><%= link_to "Destroy", book_path(@book.id), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-sm btn-danger" %></td>
-             <td><% if @post_image.user == current_user %>
-                  <%= link_to "削除", post_image_path(@post_image), method: :delete %>
                  <% end %>
-             </td>
            </tr>
         </tbody>
      </table>
