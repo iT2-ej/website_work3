@@ -13,17 +13,22 @@
      </tr>
    </tbody>
  </table>
-    <% if user.id == current_user.id %>
-    <%= link_to edit_user_path(current_user.id), class:"btn btn-outline-secondary btn-block" do%>
+    
+    <%= link_to edit_user_path(user), class:"btn btn-outline-secondary btn-block" do%>
      <i class="fas fa-user-cog"></i>
     <% end %>
-    <% else %>
-     <%= link_to user_path(current_user.id), class:"btn btn-outline-secondary btn-block" do%>
-     <i class="fas fa-user-cog"></i>
-    <% end %>
-    <% end %>
+    
+   
 
  <h2>New book</h2>
+  <% if book.errors.any? %>
+   <%= book.errors.count %>件のエラーが発生しました
+   <ul>
+     <% book.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+     <% end %>
+   </ul>
+  <% end %>
   <%= form_with model: Book.new do |f| %>
     <%= f.label :title %><br>
     <%= f.text_field :title %>
